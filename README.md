@@ -143,10 +143,9 @@ Run the commands in this order from the project root:
 
    Or run the complete gRPC suite with one command:
 
-   ```bash
-k6 run grpc/tests/suite.js
-```
-
+    ```bash
+ k6 run grpc/tests/suite.js
+    ```
    The streaming case records that streaming is not exposed by the current
    QuickPizza proto; the available RPCs are unary `Status` and `RatePizza`.
 
