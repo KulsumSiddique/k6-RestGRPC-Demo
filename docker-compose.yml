@@ -1,0 +1,11 @@
+services:
+  quickpizza:
+    image: ghcr.io/grafana/quickpizza-local:0.15.30
+    container_name: crud-playwright-quickpizza
+    ports:
+      - "8080:3333"
+      - "5051:3334"
+    environment:
+      QUICKPIZZA_ENABLE_ALL_SERVICES: "1"
+      QUICKPIZZA_DB: ""
+    restart: unless-stopped

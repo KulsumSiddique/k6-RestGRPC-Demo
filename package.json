@@ -1,0 +1,35 @@
+{
+  "name": "quickpizza-playwright-crud",
+  "private": true,
+  "scripts": {
+    "test": "playwright test --project=chromium --workers=1",
+    "test:parallel": "playwright test --project=chromium",
+    "test:smoke": "playwright test --project=chromium --grep @smoke",
+    "test:cross-browser": "playwright test",
+    "test:api": "playwright test --project=chromium --grep @api",
+    "test:ui": "playwright test --ui",
+    "test:ui:cases": "playwright test --project=chromium --grep @ui",
+    "test:regression": "playwright test --project=chromium --grep @regression",
+    "report": "playwright show-report",
+    "report:k6": "node scripts/k6-report.mjs",
+    "test:rest:all": "docker compose up -d && k6 run rest/tests/suite.js && k6 run --summary-export=test-results/k6/rest-performance.json rest/tests/performance-suite.js && npm run report:k6 -- test-results/k6/rest-performance.json",
+    "test:grpc:all": "docker compose up -d && k6 run grpc/tests/suite.js && k6 run --summary-export=test-results/k6/grpc-performance.json grpc/tests/performance-suite.js && npm run report:k6 -- test-results/k6/grpc-performance.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@types/node": "^26.5.1",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.70.0"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "dotenv": "^17.4.2",
+    "zod": "^4.6.5"
+  }
+}
