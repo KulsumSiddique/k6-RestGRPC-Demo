@@ -1,5 +1,3 @@
-import { uniqueValue } from '../../shared/data.js';
-
 export function buildRatingPayload() {
   return {
     pizza_id: 1,

@@ -12,10 +12,18 @@ export function loadScenario() {
 export function stressScenario() {
   stress();
 }
-export function soakScenario() { soak(); }
-export function spikeScenario() { spike(); }
-export function breakpointScenario() { breakpoint(); }
-export function syntheticScenario() { synthetic(); }
+export function soakScenario() {
+  soak();
+}
+export function spikeScenario() {
+  spike();
+}
+export function breakpointScenario() {
+  breakpoint();
+}
+export function syntheticScenario() {
+  synthetic();
+}
 
 export const options = {
   scenarios: {
@@ -44,8 +52,32 @@ export const options = {
       ],
     },
     soak: { executor: 'constant-vus', exec: 'soakScenario', vus: 2, duration: '15m', startTime: '0s' },
-    spike: { executor: 'ramping-vus', exec: 'spikeScenario', startVUs: 0, stages: [{ duration: '5s', target: 1 }, { duration: '5s', target: 10 }, { duration: '20s', target: 10 }, { duration: '5s', target: 1 }, { duration: '5s', target: 0 }] },
-    breakpoint: { executor: 'ramping-vus', exec: 'breakpointScenario', startTime: '0s', startVUs: 0, stages: [{ duration: '10s', target: 1 }, { duration: '10s', target: 2 }, { duration: '10s', target: 4 }, { duration: '10s', target: 8 }, { duration: '10s', target: 16 }, { duration: '10s', target: 0 }] },
+    spike: {
+      executor: 'ramping-vus',
+      exec: 'spikeScenario',
+      startVUs: 0,
+      stages: [
+        { duration: '5s', target: 1 },
+        { duration: '5s', target: 10 },
+        { duration: '20s', target: 10 },
+        { duration: '5s', target: 1 },
+        { duration: '5s', target: 0 },
+      ],
+    },
+    breakpoint: {
+      executor: 'ramping-vus',
+      exec: 'breakpointScenario',
+      startTime: '0s',
+      startVUs: 0,
+      stages: [
+        { duration: '10s', target: 1 },
+        { duration: '10s', target: 2 },
+        { duration: '10s', target: 4 },
+        { duration: '10s', target: 8 },
+        { duration: '10s', target: 16 },
+        { duration: '10s', target: 0 },
+      ],
+    },
     synthetic: { executor: 'shared-iterations', exec: 'syntheticScenario', vus: 1, iterations: 1, startTime: '0s' },
   },
   thresholds: {
